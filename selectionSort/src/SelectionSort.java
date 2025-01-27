@@ -36,9 +36,10 @@ public class SelectionSort {
      */
     public static void riempiVettore(int[] v) {
         System.out.println("Inserisci un numero intero");
-        Scanner in = new Scanner(System.in);
-        for (int i = 0; i < v.length; i++) {
-            v[i] = in.nextInt();
+        try (Scanner in = new Scanner(System.in)) {
+            for (int i = 0; i < v.length; i++) {
+                v[i] = in.nextInt();
+            }
         }
 
     }
