@@ -5,14 +5,12 @@ public class SelectionSort {
     public static void main(String[] args) {
 
         int[] v = new int[5]; // vettore
+        // riempiVettore(v); // riempimento
+        // stampaVettore(v); // visualizzazione
+        // ordina(v); // ordinamento
         riempiVettore(v); // riempimento
         stampaVettore(v); // visualizzazione
-        ordina(v); // ordinamento
-
-        int[] vett = new int[5]; // vettore
-        riempiVettore(vett); // riempimento
-        stampaVettore(vett); // visualizzazione
-        ordina2(vett); // ordinamento
+        ordina2(v); // ordinamento
 
     }
 
@@ -22,11 +20,11 @@ public class SelectionSort {
      * @param v vettore
      */
     public static void stampaVettore(int[] v) {
-        System.out.print("[");
-        for (int i = 0; i < v.length; i++) {
+        System.out.print("["); // quadra iniziale
+        for (int i = 0; i < v.length; i++) { // elementi
             System.out.print(v[i] + " ");
         }
-        System.out.println("]");
+        System.out.println("]"); // quadra finale
     }
 
     /**
@@ -35,9 +33,9 @@ public class SelectionSort {
      * @param v vettore
      */
     public static void riempiVettore(int[] v) {
-        System.out.println("Inserisci un numero intero");
-        try (Scanner in = new Scanner(System.in)) {
-            for (int i = 0; i < v.length; i++) {
+        System.out.println("Inserisci un numero intero"); // messaggio
+        try (Scanner in = new Scanner(System.in)) { // scanner
+            for (int i = 0; i < v.length; i++) { // elementi
                 v[i] = in.nextInt();
             }
         }
@@ -49,20 +47,21 @@ public class SelectionSort {
      *
      * @param v
      */
-    public static void ordina(int[] v) {
-        int j = 1;
-        for (int i = 0; i < v.length; i++) {
-            while (j < v.length) {
-                if (v[j] < v[i]) {
-                    int temp = v[i];
-                    v[i] = v[j];
-                    v[j] = temp;
+    public static void ordina(int[] v) { // ordinamento 
+        int j = 1; // contatore 
+        for (int i = 0; i < v.length; i++) { // ciclo esterno
+            while (j < v.length) { // ciclo interno
+                if (v[j] < v[i]) { // confronto
+                    int temp = v[i]; // scambio
+                    v[i] = v[j]; // scambio
+                    v[j] = temp; // scambio
                 }
-                j++;
+                j++; // incremento
+                stampaVettore(v); // visualizzazione
             }
-            j = i + 1;
+            j = i + 1; // setto la variabile
 
-            stampaVettore(v);
+            stampaVettore(v); // visualizzazione
 
         }
 
@@ -73,25 +72,26 @@ public class SelectionSort {
      *
      * @param v
      */
-    public static void ordina2(int[] v) {
-        for (int i = 0; i < v.length; i++) {
-            int posMin = i;
-            int elMin = v[i];
+    public static void ordina2(int[] v) { // ordinamento
+        for (int i = 0; i < v.length; i++) { // ciclo esterno
+            int posMin = i; // posizione elemento minimo
+            int elMin = v[i]; // elemento minimo
 
-            for (int j = i; j < v.length - 1; j++) {
-                if (v[j] > v[j + 1]) {
-                    posMin = j+1;
-                    elMin = v[posMin];
+            for (int j = i; j < v.length - 1; j++) { // ciclo interno
+                if (v[j] > v[j + 1]) { // confronto
+                    posMin = j+1; // posizione elemento minimo
+                    elMin = v[posMin]; // elemento minimo
                 }
             }
-            System.out.println(posMin);
-            System.out.println(elMin);
-            if (v[i] > elMin) {
-                int temp = v[i];
-                v[i] = v[posMin];
-                v[posMin] = temp;
+            // stampo per verifica
+            System.out.println(posMin); // stampa
+            System.out.println(elMin);  // stampa
+            if (v[i] > elMin) { // confronto
+                int temp = v[i]; // scambio
+                v[i] = v[posMin]; // scambio
+                v[posMin] = temp; // scambio
             }
-            stampaVettore(v);
+            stampaVettore(v); // visualizzazione
         }
 
     }
