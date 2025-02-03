@@ -1,6 +1,9 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class SelectionSort {
+
+    public static Random r = new Random();
 
     public static void main(String[] args) {
 
@@ -8,14 +11,20 @@ public class SelectionSort {
         // riempiVettore(v); // riempimento
         // stampaVettore(v); // visualizzazione
         // ordina(v); // ordinamento
-        riempiVettore(v); // riempimento
-        stampaVettore(v); // visualizzazione
-        ordina2(v); // ordinamento
+//        riempiVettore(v); // riempimento
+//        stampaVettore(v); // visualizzazione
+//        ordina2(v); // ordinamento
+        int[] v1 = v.clone();
+        riempiVettore(v1);
+        stampaVettore(v1);
+//        selectionSort(v);
+        stupidSort(v1);
+        stampaVettore(v1);
 
     }
 
     /**
-     * Metodo * visualizzare il vettore
+     * Metodo * visualizzare il vettore Fisher-Yates
      *
      * @param v vettore
      */
@@ -79,7 +88,7 @@ public class SelectionSort {
 
             for (int j = i; j < v.length - 1; j++) { // ciclo interno
                 if (v[j] > v[j + 1]) { // confronto
-                    posMin = j+1; // posizione elemento minimo
+                    posMin = j + 1; // posizione elemento minimo
                     elMin = v[posMin]; // elemento minimo
                 }
             }
@@ -93,6 +102,61 @@ public class SelectionSort {
             }
             stampaVettore(v); // visualizzazione
         }
+
+    }
+
+    public static void selectionSort(int[] v) {
+        int posMin;
+
+        for (int i = 0; i < v.length - 1; i++) {
+
+            posMin = i;
+            for (int j = i + 1; j < v.length; j++) { // cella con valore minimo
+                if (v[j] < v[posMin]) {
+
+                    posMin = j;
+
+                }
+            }
+
+            int temp = v[i]; // scambio
+            v[i] = v[posMin]; // scambio
+            v[posMin] = temp; // scambio
+            stampaVettore(v);
+        }
+        stampaVettore(v);
+
+    }
+
+    /**
+     *
+     * @param v
+     */
+    private static void shuffle(int[] v) { // passaggio per riferimento
+        for (int i = 0; i < v.length; i++) {
+            int rIndex = r.nextInt(v.length - 1);
+            int temp = v[i]; // scambio
+            v[i] = v[rIndex]; // scambio
+            v[rIndex] = temp; // scambio
+        }
+
+    }
+
+    public static void stupidSort(int[] v) {
+        while (ordinato(v) == false) {
+            shuffle(v);
+        }
+
+    }
+
+    public static boolean ordinato(int[] v) {
+        for (int i = 0; i < v.length - 1; i++) {
+            if (v[i+1] < v[i]) {
+                return false;
+            }
+        }
+        
+        return true;
 
     }
 
