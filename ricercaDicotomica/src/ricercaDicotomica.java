@@ -9,6 +9,7 @@ public class ricercaDicotomica {
         int n = in.nextInt();
         System.out.println(ricerca(v, n));
 
+        in.close();
     }
 
     public static boolean ricerca(int[] v, int n) {
