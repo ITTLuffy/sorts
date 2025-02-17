@@ -19,4 +19,5 @@ adattabilità -->
 complessità --> O(n) ricerca O(n^2) ordinamento O(n*log(n)) ordinamento ottimo O(n*n!) ordinamento peggiore visto
 
 
-      
+## tabella
+Migliore 
