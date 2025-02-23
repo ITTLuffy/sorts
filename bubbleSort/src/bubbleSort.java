@@ -143,7 +143,8 @@ public class bubbleSort {
     }
 
     /**
-     * Metodo per riempire il vettore
+     * Metodo per ri
+     * empire il vettore
      *
      * @param v     vettore
      * @param nuovo numero da inserire
